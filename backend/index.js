@@ -4,12 +4,12 @@ import { runAIVisibility } from "./openai.js";
 
 
 const app = express();
-app.use(
-  cors({
-    origin: "https://write-sonic-tracker.vercel.app",
-    credentials:true
-  })
-);
+app.use(cors({
+  origin: "https://write-sonic-tracker.vercel.app/",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 app.use(express.json());
 
 app.post("/run", async (req, res) => {
