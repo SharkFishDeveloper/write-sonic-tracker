@@ -12,7 +12,7 @@ export default function App() {
 
   async function runTracker(category, brands) {
     setLoading(true);
-    const res = await fetch("https://write-sonic-tracker.onrender.com", {
+    const res = await fetch("https://write-sonic-tracker.onrender.com/run", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ category, brands })
