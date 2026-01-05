@@ -1,6 +1,4 @@
 export default function   TopSources({ sources }) {
-  if (!sources.length) return <h3>No sources found</h3>;
-  console.log(sources)
   return (
     <div className="bg-white p-4 rounded shadow mb-6">
       <h2 className="text-xl font-semibold mb-3">
