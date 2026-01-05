@@ -31,7 +31,7 @@ Rules:
     ],
     temperature: 0.7
   });
-  const raw = response.choices[0].message.content;
+ const raw = response.choices[0].message.content;
   const cleaned = extractJson(raw);
 
   return JSON.parse(cleaned);
