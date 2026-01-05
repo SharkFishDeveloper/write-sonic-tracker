@@ -31,6 +31,15 @@ Rules:
     ],
     temperature: 0.7
   });
+ const raw = response.choices[0].message.content;
+  const cleaned = extractJson(raw);
 
-  return JSON.parse(response.choices[0].message.content);
+  return JSON.parse(cleaned);
+}
+
+function extractJson(text) {
+  return text
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
 }

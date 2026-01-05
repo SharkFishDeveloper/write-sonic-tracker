@@ -10,6 +10,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+app.options("*", cors());
 app.use(express.json());
 
 app.post("/run", async (req, res) => {
