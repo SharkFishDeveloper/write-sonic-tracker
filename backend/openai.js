@@ -10,7 +10,7 @@ const openai = new OpenAI({
 });
 
 export async function runAIVisibility(category, brands) {
-  const prompts = generatePrompts(category);
+  const prompts = await generatePrompts(category);
   
   const promptPromises = prompts.map(async (prompt) => {
     try {
