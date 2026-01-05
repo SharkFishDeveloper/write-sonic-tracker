@@ -11,17 +11,37 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   async function runTracker(category, brands) {
-    setLoading(true);
+  setLoading(true);
+
+  try {
     const res = await fetch("https://write-sonic-tracker.onrender.com/run", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ category, brands })
     });
 
-    const json = await res.json();
+    const text = await res.text(); // 👈 read raw response first
+
+    if (!res.ok) {
+      console.error("Server error:", text);
+      throw new Error("Backend failed");
+    }
+
+    let json;
+    try {
+      json = JSON.parse(text);
+    } catch {
+      console.error("Not JSON:", text);
+      throw new Error("Invalid JSON response");
+    }
+
     setData(json);
+  } catch (err) {
+    alert(err.message);
+  } finally {
     setLoading(false);
   }
+}
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
