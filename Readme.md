@@ -53,7 +53,7 @@ Brands need to know:
 # Backend
 cd backend
 npm install
-Create .env with Environment variable OPENAI_API_KEY=your_key
+Create .env as per .env.example
 node index.js
 ```
 
