@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Production / Build outputs
+dist/
+build/
+out/
+.next/
+.vuepress/dist/
+
+# Environment variables (Crucial for security!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.veg
+.env*.local
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output
+
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
