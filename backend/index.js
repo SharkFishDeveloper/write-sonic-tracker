@@ -2,11 +2,22 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { runAIVisibility } from "./openai.js";
+import { rateLimit } from "express-rate-limit";
 
 dotenv.config();
 
 const app = express();
 
+
+const aiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: {
+    error: "Too many requests. Please try again after 15 minutes."
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
 
 app.use(cors({
   origin: process.env.CLIENT_ORIGIN,
@@ -15,7 +26,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.post("/run",async (req, res) => {
+app.post("/run",aiLimiter,async (req, res) => {
   const { category, brands } = req.body;
 
   if (!category || !Array.isArray(brands) || brands.length === 0) {
