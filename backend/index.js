@@ -21,6 +21,8 @@ const aiLimiter = rateLimit({
 
 app.use(cors({
   origin: process.env.CLIENT_ORIGIN,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
